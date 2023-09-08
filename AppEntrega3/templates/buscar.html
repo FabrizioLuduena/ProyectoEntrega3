@@ -1,0 +1,30 @@
+{% extends "padre.html" %}
+
+{% block ContenidoqueCambia %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda</title>
+</head>
+<body>
+    <h1>Búsqueda de Productos</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+    {% if resultados %}
+        <h2>Resultados de la Búsqueda:</h2>
+        <ul>
+            {% for producto in resultados %}
+                <li>{{ producto.nombre }} - {{ producto.descripcion }} - Precio: ${{ producto.precio }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron resultados.</p>
+    {% endif %}
+</body>
+</html>
+{% endblock ContenidoqueCambia %}

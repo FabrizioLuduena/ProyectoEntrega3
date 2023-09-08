@@ -1,0 +1,40 @@
+{% extends "padre.html" %}
+
+{% block ContenidoqueCambia %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Categorías</title>
+    <!-- Agrega tus enlaces a hojas de estilo CSS aquí -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Categorías</h1>
+        <!-- Agrega la navegación o enlaces relevantes aquí -->
+    </header>
+
+    <main>
+        <section class="categorias">
+            <h2>Categorías Disponibles</h2>
+            <ul>
+                {% for categoria in lista_categoria %}
+                    <li>
+                        <h3>{{ categoria.nombre }}</h3>
+                        <p>{{ categoria.descripcion }}</p>
+                    </li>
+                {% empty %}
+                    <li>No hay categorías disponibles.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; {{ año_actual }} Tienda de Partes de Computadora. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+{% endblock ContenidoqueCambia %}

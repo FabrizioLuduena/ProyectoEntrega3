@@ -1,0 +1,43 @@
+{% extends "padre.html" %}
+
+{% block ContenidoqueCambia %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <!-- Agrega tus enlaces a hojas de estilo CSS aquí -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Productos</h1>
+        <!-- Agrega la navegación o enlaces relevantes aquí -->
+    </header>
+
+    <main>
+        <section class="productos">
+            <h2>Productos Disponibles</h2>
+            <ul>
+                {% for producto in lista_producto %}
+                    <li>
+                        <h3>{{ producto.nombre }}</h3>
+                        <p>{{ producto.descripcion }}</p>
+                        <p>Precio: ${{ producto.precio }}</p>
+                    </li>
+                {% empty %}
+                    <li>No hay productos disponibles.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; {{ año_actual }} Tienda de Partes de Computadora. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+
+{% endblock ContenidoqueCambia %}
